@@ -16,6 +16,7 @@ const elGallery = galleryItems
   )
   .join("");
 gallery.insertAdjacentHTML("afterbegin", elGallery);
+console.log(galleryItems);
 gallery.addEventListener("click", selectImg);
 function selectImg(event) {
   event.preventDefault();
