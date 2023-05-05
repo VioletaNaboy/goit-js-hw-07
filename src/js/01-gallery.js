@@ -23,14 +23,18 @@ function selectImg(event) {
     const selectedImg = event.target.dataset.source;
     const instance = basicLightbox.create(
       `
-    <img src="${selectedImg}" alt="${event.target.alt}"> `
+    <img src="${selectedImg}" alt="${event.target.alt}"> `,
+      {
+        onClose: function () {
+          document.removeEventListener("keydown", closeByEscape);
+        },
+      }
     );
     instance.show();
     document.addEventListener("keydown", closeByEscape);
     function closeByEscape(event) {
       if (event.code === "Escape") {
         instance.close();
-        document.removeEventListener("keydown", closeByEscape);
       }
     }
   } else {
