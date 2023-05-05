@@ -15,7 +15,6 @@ const elGallery = galleryItems
   )
   .join("");
 elAllGallery.insertAdjacentHTML("afterbegin", elGallery);
-console.log(galleryItems);
 let gallery = new SimpleLightbox(".gallery__link", {
   captions: true,
   captionDelay: 250,

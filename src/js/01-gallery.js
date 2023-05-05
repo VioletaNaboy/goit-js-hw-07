@@ -16,7 +16,6 @@ const elGallery = galleryItems
   )
   .join("");
 gallery.insertAdjacentHTML("afterbegin", elGallery);
-console.log(galleryItems);
 gallery.addEventListener("click", selectImg);
 function selectImg(event) {
   event.preventDefault();
@@ -27,12 +26,13 @@ function selectImg(event) {
     <img src="${selectedImg}" alt="${event.target.alt}"> `
     );
     instance.show();
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
+    document.addEventListener("keydown", closeByEscape);
+    function closeByEscape(event) {
+      if (event.code === "Escape") {
         instance.close();
-        document.removeEventListener();
+        document.removeEventListener("keydown", closeByEscape);
       }
-    });
+    }
   } else {
     return;
   }
